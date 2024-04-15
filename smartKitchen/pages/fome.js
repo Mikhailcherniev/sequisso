@@ -6,7 +6,7 @@ import { useState } from 'react'
 const alturaStatusBar = StatusBar.currentHeight
 const KEY_GPT = 'SUA_CHAVE_DE_API';
 
-export default function App() {
+export function Fome() {
 
   const [load, defLoad] = useState(false);
   const [receita, defReceita] = useState("");
@@ -19,14 +19,14 @@ export default function App() {
 
   async function gerarReceita() {
     if (ingr1 === "" || ingr2 === "" || ingr3 === "" || ingr4 === "" || ocasiao === "") {
-      Alert.alert("Atenção", "Informe todos os ingredientes!", [{ text: "Beleza!" }])
+      Alert.alert("Atenção", "Informe todos os itens!", [{ text: "ZoK!" }])
       return;
     }
     defReceita("");
     defLoad(true);
     Keyboard.dismiss();
 
-    const prompt = `Sugira uma receita detalhada para o ${ocasiao} usando os ingredientes: ${ingr1}, ${ingr2}, ${ingr3} e ${ingr4} e pesquise a receita no YouTube. Caso encontre, informe o link.`;
+    const prompt = `Sugira um mangá para ser lido, que já tenha sido traduzido para PT-BR, lançado no ano ${ocasiao}, com o gênero ${ingr1}, do autor ${ingr2}, com ${ingr3} capítulos e com classificação etária de ${ingr4} e pesquise onde ler esse mangá na internet. Caso encontre, informe o link.`;
 
     fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
@@ -63,35 +63,35 @@ export default function App() {
   return (
     <View style={ESTILOS.container}>
       <StatusBar barStyle="dark-content" translucent={true} backgroundColor="#F1F1F1" />
-      <Text style={ESTILOS.header}>Cozinha fácil</Text>
+      <Text style={ESTILOS.header}>Leitura de Mangás</Text>
       <View style={ESTILOS.form}>
-        <Text style={ESTILOS.label}>Insira os ingredientes abaixo:</Text>
+        <Text style={ESTILOS.label}>Insira as informações abaixo:</Text>
         <TextInput
-          placeholder="Ingrediente 1"
+          placeholder="Gênero"
           style={ESTILOS.input}
           value={ingr1}
           onChangeText={(texto) => defIngr1(texto)}
         />
         <TextInput
-          placeholder="Ingrediente 2"
+          placeholder="Autor"
           style={ESTILOS.input}
           value={ingr2}
           onChangeText={(texto) => defIngr2(texto)}
         />
         <TextInput
-          placeholder="Ingrediente 3"
+          placeholder="Quant. de Capítulos"
           style={ESTILOS.input}
           value={ingr3}
           onChangeText={(texto) => defIngr3(texto)}
         />
         <TextInput
-          placeholder="Ingrediente 4"
+          placeholder="Classificação Etária"
           style={ESTILOS.input}
           value={ingr4}
           onChangeText={(texto) => defIngr4(texto)}
         />
         <TextInput
-          placeholder="Almoço ou Jantar"
+          placeholder="Ano"
           style={ESTILOS.input}
           value={ocasiao}
           onChangeText={(texto) => defOcasiao(texto)}
@@ -99,21 +99,21 @@ export default function App() {
       </View>
 
       <TouchableOpacity style={ESTILOS.button} onPress={gerarReceita}>
-        <Text style={ESTILOS.buttonText}>Gerar receita</Text>
+        <Text style={ESTILOS.buttonText}>Gerar mangá</Text>
         <MaterialCommunityIcons name="food-variant" size={24} color="#FFF" />
       </TouchableOpacity>
 
       <ScrollView contentContainerStyle={{ paddingBottom: 24, marginTop: 4, }} style={ESTILOS.containerScroll} showsVerticalScrollIndicator={false} >
         {load && (
           <View style={ESTILOS.content}>
-            <Text style={ESTILOS.title}>Produzindo receita...</Text>
+            <Text style={ESTILOS.title}>Produzindo mangá...</Text>
             <ActivityIndicator color="#000" size="large" />
           </View>
         )}
 
         {receita && (
           <View style={ESTILOS.content}>
-            <Text style={ESTILOS.title}>Sua receita 👇</Text>
+            <Text style={ESTILOS.title}>Seu mangá 👇</Text>
             <Text style={{ lineHeight: 24 }}>{receita} </Text>
           </View>
         )}
