@@ -100,7 +100,7 @@ export function Viagem() {
 
       <TouchableOpacity style={ESTILOS.button} onPress={gerarReceita}>
         <Text style={ESTILOS.buttonText}>Gerar viagem</Text>
-        <MaterialCommunityIcons name="food-variant" size={24} color="#FFF" />
+        <MaterialCommunityIcons name="map" size={24} color="#FFF" />
       </TouchableOpacity>
 
       <ScrollView contentContainerStyle={{ paddingBottom: 24, marginTop: 4, }} style={ESTILOS.containerScroll} showsVerticalScrollIndicator={false} >
@@ -125,7 +125,7 @@ export function Viagem() {
 const ESTILOS = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f1f1f1',
+    backgroundColor: '#808080',
     alignItems: 'center',
     paddingTop: 20,
   },
@@ -135,7 +135,7 @@ const ESTILOS = StyleSheet.create({
     paddingTop: Platform.OS === 'android' ? alturaStatusBar : 54
   },
   form: {
-    backgroundColor: '#FFF',
+    backgroundColor: '#DCDCDC',
     width: '90%',
     borderRadius: 8,
     padding: 16,
@@ -156,7 +156,7 @@ const ESTILOS = StyleSheet.create({
     marginBottom: 16,
   },
   button: {
-    backgroundColor: 'blue',
+    backgroundColor: 'red',
     width: '90%',
     borderRadius: 8,
     flexDirection: 'row',

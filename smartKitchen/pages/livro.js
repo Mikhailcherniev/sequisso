@@ -6,7 +6,7 @@ import { useState } from 'react'
 const alturaStatusBar = StatusBar.currentHeight
 const KEY_GPT = 'SUA_CHAVE_DE_API';
 
-export function livro() {
+export function Livro() {
 
   const [load, defLoad] = useState(false);
   const [receita, defReceita] = useState("");
@@ -15,10 +15,9 @@ export function livro() {
   const [ingr2, defIngr2] = useState("");
   const [ingr3, defIngr3] = useState("");
   const [ingr4, defIngr4] = useState("");
-  const [ocasiao, defOcasiao] = useState("");
 
   async function gerarReceita() {
-    if (ingr1 === "" || ingr2 === "" || ingr3 === "" || ingr4 === "" || ocasiao === "") {
+    if (ingr1 === "" || ingr2 === "" || ingr3 === "" || ingr4 === "" ) {
       Alert.alert("Atenção", "Informe todos os itens!", [{ text: "ZoK!" }])
       return;
     }
@@ -26,7 +25,7 @@ export function livro() {
     defLoad(true);
     Keyboard.dismiss();
 
-    const prompt = `Sugira um livro para ser lido, ${ocasiao}, com o gênero ${ingr1}, da Època ${ingr2}, com ${ingr3} classificação etária de ${ingr4} e pesquise onde ler esse livro na internet. Caso encontre, informe o link.`;
+    const prompt = `Sugira um livro para ser lido com o gênero ${ingr1}, da Època ${ingr2}, com ${ingr3} classificação etária de ${ingr4} e pesquise onde ler esse livro na internet. Caso encontre, informe o link.`;
 
     fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
@@ -63,7 +62,7 @@ export function livro() {
   return (
     <View style={ESTILOS.container}>
       <StatusBar barStyle="dark-content" translucent={true} backgroundColor="#F1F1F1" />
-      <Text style={ESTILOS.header}>Leitura de Mangás</Text>
+      <Text style={ESTILOS.header}>Que tal um livro?</Text>
       <View style={ESTILOS.form}>
         <Text style={ESTILOS.label}>Insira as informações abaixo:</Text>
         <TextInput
@@ -90,30 +89,24 @@ export function livro() {
           value={ingr4}
           onChangeText={(texto) => defIngr4(texto)}
         />
-        <TextInput
-          placeholder="Ano"
-          style={ESTILOS.input}
-          value={ocasiao}
-          onChangeText={(texto) => defOcasiao(texto)}
-        />
-      </View>
+        </View>
 
       <TouchableOpacity style={ESTILOS.button} onPress={gerarReceita}>
-        <Text style={ESTILOS.buttonText}>Gerar mangá</Text>
-        <MaterialCommunityIcons name="food-variant" size={24} color="#FFF" />
+        <Text style={ESTILOS.buttonText}>Gerar Livro</Text>
+        <MaterialCommunityIcons name="book" size={24} color="#FFF" />
       </TouchableOpacity>
 
       <ScrollView contentContainerStyle={{ paddingBottom: 24, marginTop: 4, }} style={ESTILOS.containerScroll} showsVerticalScrollIndicator={false} >
         {load && (
           <View style={ESTILOS.content}>
-            <Text style={ESTILOS.title}>Produzindo mangá...</Text>
+            <Text style={ESTILOS.title}>Produzindo Livro...</Text>
             <ActivityIndicator color="#000" size="large" />
           </View>
         )}
 
         {receita && (
           <View style={ESTILOS.content}>
-            <Text style={ESTILOS.title}>Seu mangá 👇</Text>
+            <Text style={ESTILOS.title}>Seu Livro 👇</Text>
             <Text style={{ lineHeight: 24 }}>{receita} </Text>
           </View>
         )}
@@ -125,7 +118,7 @@ export function livro() {
 const ESTILOS = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f1f1f1',
+    backgroundColor: '#808080',
     alignItems: 'center',
     paddingTop: 20,
   },
@@ -135,7 +128,7 @@ const ESTILOS = StyleSheet.create({
     paddingTop: Platform.OS === 'android' ? alturaStatusBar : 54
   },
   form: {
-    backgroundColor: '#FFF',
+    backgroundColor: '#DCDCDC',
     width: '90%',
     borderRadius: 8,
     padding: 16,
@@ -150,13 +143,13 @@ const ESTILOS = StyleSheet.create({
   input: {
     borderWidth: 1,
     borderRadius: 4,
-    borderColor: '#94a3b8',
+    borderColor: '#000',
     padding: 8,
     fontSize: 16,
     marginBottom: 16,
   },
   button: {
-    backgroundColor: 'blue',
+    backgroundColor: 'red',
     width: '90%',
     borderRadius: 8,
     flexDirection: 'row',

@@ -26,7 +26,7 @@ export function Nome() {
     defLoad(true);
     Keyboard.dismiss();
 
-    const prompt = `Crie um texto detalhada de modo ${ocasiao} com ${ingr4} Linhas, usando as informações: ${ingr1}, ${ingr2}, ${ingr3} e pesquise autores parecidos que produzem algo do gênero.`;
+    const prompt = `Crie um nome com as seguintes caracteristicas ${ocasiao} com ${ingr4} caracteristicas, usando as informações: ${ingr1}, ${ingr2}, ${ingr3} e pesquise nomes parecidos .`;
 
     fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
@@ -85,7 +85,7 @@ export function Nome() {
           onChangeText={(texto) => defIngr3(texto)}
         />
         <TextInput
-          placeholder="Quant. de Linhas"
+          placeholder="tamanho de nome"
           style={ESTILOS.input}
           value={ingr4}
           onChangeText={(texto) => defIngr4(texto)}
@@ -100,7 +100,7 @@ export function Nome() {
 
       <TouchableOpacity style={ESTILOS.button} onPress={gerarReceita}>
         <Text style={ESTILOS.buttonText}>Gerar Nome</Text>
-        <MaterialCommunityIcons name="food-variant" size={24} color="#FFF" />
+        <MaterialCommunityIcons name="heart" size={24} color="#FFF" />
       </TouchableOpacity>
 
       <ScrollView contentContainerStyle={{ paddingBottom: 24, marginTop: 4, }} style={ESTILOS.containerScroll} showsVerticalScrollIndicator={false} >
@@ -113,7 +113,7 @@ export function Nome() {
 
         {receita && (
           <View style={ESTILOS.content}>
-            <Text style={ESTILOS.title}>Seu NOme  👇</Text>
+            <Text style={ESTILOS.title}>Seu Nome  👇</Text>
             <Text style={{ lineHeight: 24 }}>{receita} </Text>
           </View>
         )}
@@ -125,7 +125,7 @@ export function Nome() {
 const ESTILOS = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f1f1f1',
+    backgroundColor: '#808080',
     alignItems: 'center',
     paddingTop: 20,
   },
@@ -135,7 +135,7 @@ const ESTILOS = StyleSheet.create({
     paddingTop: Platform.OS === 'android' ? alturaStatusBar : 54
   },
   form: {
-    backgroundColor: '#FFF',
+    backgroundColor: '#DCDCDC',
     width: '90%',
     borderRadius: 8,
     padding: 16,
@@ -156,7 +156,7 @@ const ESTILOS = StyleSheet.create({
     marginBottom: 16,
   },
   button: {
-    backgroundColor: 'blue',
+    backgroundColor: 'red',
     width: '90%',
     borderRadius: 8,
     flexDirection: 'row',
@@ -187,5 +187,4 @@ const ESTILOS = StyleSheet.create({
     width: '90%',
     marginTop: 8,
   }
-});
-
+})

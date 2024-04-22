@@ -124,7 +124,7 @@ export function Receita() {
 const ESTILOS = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f1f1f1',
+    backgroundColor: '#808080',
     alignItems: 'center',
     paddingTop: 20,
   },
@@ -134,7 +134,7 @@ const ESTILOS = StyleSheet.create({
     paddingTop: Platform.OS === 'android' ? alturaStatusBar : 54
   },
   form: {
-    backgroundColor: '#FFF',
+    backgroundColor: '#DCDCDC',
     width: '90%',
     borderRadius: 8,
     padding: 16,
@@ -155,7 +155,7 @@ const ESTILOS = StyleSheet.create({
     marginBottom: 16,
   },
   button: {
-    backgroundColor: 'blue',
+    backgroundColor: 'red',
     width: '90%',
     borderRadius: 8,
     flexDirection: 'row',
