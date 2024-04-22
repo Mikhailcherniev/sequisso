@@ -26,7 +26,7 @@ export function Nome() {
     defLoad(true);
     Keyboard.dismiss();
 
-    const prompt = `Crie um nome com as seguintes caracteristicas ${ocasiao} com ${ingr4} caracteristicas, usando as informações: ${ingr1}, ${ingr2}, ${ingr3} e pesquise nomes parecidos .`;
+    const prompt = `Crie um nome com as seguintes caracteristicas ${ocasiao} ,com ${ingr4} caracteristicas, usando as informações: ${ingr1}, ${ingr2}, ${ingr3} e pesquise nomes parecidos .`;
 
     fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
@@ -91,7 +91,7 @@ export function Nome() {
           onChangeText={(texto) => defIngr4(texto)}
         />
         <TextInput
-          placeholder=""
+          placeholder="sexo"
           style={ESTILOS.input}
           value={ocasiao}
           onChangeText={(texto) => defOcasiao(texto)}
