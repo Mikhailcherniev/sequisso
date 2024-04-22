@@ -1,7 +1,7 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Viagem } from './pages/viagem';
-import { Fome } from './pages/fome';
-import { Poema } from './pages/poema';
+import { Livro } from './pages/livro';
+import { Nome } from './pages/nome';
 import { Receita } from './pages/receita';
 import { Ionicons } from '@expo/vector-icons'
 
@@ -39,8 +39,8 @@ export function Routes() {
                 }}
             />
             <Tab.Screen
-                name="fome"
-                component={Fome}
+                name="livro"
+                component={Livro}
                 options={{
                     tabBarShowLabel: false,
                     headerShown: false,
@@ -53,8 +53,8 @@ export function Routes() {
                 }}
             />
             <Tab.Screen
-                name="poema"
-                component={Poema}
+                name="nome"
+                component={Nome}
                 options={{
                     tabBarShowLabel: false,
                     headerShown: false,

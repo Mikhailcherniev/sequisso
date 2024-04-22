@@ -6,7 +6,7 @@ import { useState } from 'react'
 const alturaStatusBar = StatusBar.currentHeight
 const KEY_GPT = 'SUA_CHAVE_DE_API';
 
-export function Fome() {
+export function livro() {
 
   const [load, defLoad] = useState(false);
   const [receita, defReceita] = useState("");
@@ -26,7 +26,7 @@ export function Fome() {
     defLoad(true);
     Keyboard.dismiss();
 
-    const prompt = `Sugira um mangá para ser lido, que já tenha sido traduzido para PT-BR, lançado no ano ${ocasiao}, com o gênero ${ingr1}, do autor ${ingr2}, com ${ingr3} capítulos e com classificação etária de ${ingr4} e pesquise onde ler esse mangá na internet. Caso encontre, informe o link.`;
+    const prompt = `Sugira um livro para ser lido, ${ocasiao}, com o gênero ${ingr1}, da Època ${ingr2}, com ${ingr3} classificação etária de ${ingr4} e pesquise onde ler esse livro na internet. Caso encontre, informe o link.`;
 
     fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
@@ -73,13 +73,13 @@ export function Fome() {
           onChangeText={(texto) => defIngr1(texto)}
         />
         <TextInput
-          placeholder="Autor"
+          placeholder="Época"
           style={ESTILOS.input}
           value={ingr2}
           onChangeText={(texto) => defIngr2(texto)}
         />
         <TextInput
-          placeholder="Quant. de Capítulos"
+          placeholder="Quant. de Páginas"
           style={ESTILOS.input}
           value={ingr3}
           onChangeText={(texto) => defIngr3(texto)}

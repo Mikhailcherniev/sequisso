@@ -6,7 +6,7 @@ import { useState } from 'react'
 const alturaStatusBar = StatusBar.currentHeight
 const KEY_GPT = 'SUA_CHAVE_DE_API';
 
-export function Poema() {
+export function Nome() {
 
   const [load, defLoad] = useState(false);
   const [receita, defReceita] = useState("");
@@ -19,7 +19,7 @@ export function Poema() {
 
   async function gerarReceita() {
     if (ingr1 === "" || ingr2 === "" || ingr3 === "" || ingr4 === "" || ocasiao === "") {
-      Alert.alert("Atenção", "Informe todos os itens!", [{ text: "Beleza!" }])
+      Alert.alert("Atenção", "Informe todos os itens!", [{ text: "Zok!" }])
       return;
     }
     defReceita("");
@@ -63,7 +63,7 @@ export function Poema() {
   return (
     <View style={ESTILOS.container}>
       <StatusBar barStyle="dark-content" translucent={true} backgroundColor="#F1F1F1" />
-      <Text style={ESTILOS.header}>Gerador de Textos</Text>
+      <Text style={ESTILOS.header}>Gerador de Nomes</Text>
       <View style={ESTILOS.form}>
         <Text style={ESTILOS.label}>Insira as informações abaixo:</Text>
         <TextInput
@@ -91,7 +91,7 @@ export function Poema() {
           onChangeText={(texto) => defIngr4(texto)}
         />
         <TextInput
-          placeholder="Informal ou Formal"
+          placeholder=""
           style={ESTILOS.input}
           value={ocasiao}
           onChangeText={(texto) => defOcasiao(texto)}
@@ -99,21 +99,21 @@ export function Poema() {
       </View>
 
       <TouchableOpacity style={ESTILOS.button} onPress={gerarReceita}>
-        <Text style={ESTILOS.buttonText}>Gerar poema</Text>
+        <Text style={ESTILOS.buttonText}>Gerar Nome</Text>
         <MaterialCommunityIcons name="food-variant" size={24} color="#FFF" />
       </TouchableOpacity>
 
       <ScrollView contentContainerStyle={{ paddingBottom: 24, marginTop: 4, }} style={ESTILOS.containerScroll} showsVerticalScrollIndicator={false} >
         {load && (
           <View style={ESTILOS.content}>
-            <Text style={ESTILOS.title}>Produzindo texto...</Text>
+            <Text style={ESTILOS.title}>Produzindo Nome...</Text>
             <ActivityIndicator color="#000" size="large" />
           </View>
         )}
 
         {receita && (
           <View style={ESTILOS.content}>
-            <Text style={ESTILOS.title}>Seu texto  👇</Text>
+            <Text style={ESTILOS.title}>Seu NOme  👇</Text>
             <Text style={{ lineHeight: 24 }}>{receita} </Text>
           </View>
         )}
@@ -187,4 +187,5 @@ const ESTILOS = StyleSheet.create({
     width: '90%',
     marginTop: 8,
   }
-})
+});
+
